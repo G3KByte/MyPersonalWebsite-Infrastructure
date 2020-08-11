@@ -199,14 +199,17 @@ Resources:
           TargetOriginId: !Ref WebsiteBucket
           ViewerProtocolPolicy: "redirect-to-https"   # we want to force HTTPS
 
-Outputs:
-  WebsiteBucketName:
-    Description: The name of the website bucket
-    Value: !Ref WebsiteBucket
-    Export:
+  WebsiteBucketParam:
+    Type: 'AWS::SSM::Parameter'
+    Properties:
       Name: !Join ['-', ["WebsiteBucketName", !Ref Stage]]
-  WebsiteDistributionName:
-    Description: The name of the website distribution
-    Value: !Ref WebsiteBucketDistribution
-    Export:
+      Type: String
+      Value: !Ref WebsiteBucket
+      Description: SSM parameter for id of website bucket
+  WebsiteDistributionParam:
+    Type: AWS::SSM::Parameter
+    Properties:
       Name: !Join ['-', ["WebsiteDistributionName", !Ref Stage]]
+      Type: String
+      Value: !Ref WebsiteDistribution
+      Description: SSM parameter for id of Cloudfront distribution
