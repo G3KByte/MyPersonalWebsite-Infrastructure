@@ -19,6 +19,16 @@ Parameters:
   CertificateARN:
     Type: String
     Description: "ARN in ACM for alternate name SSL certificate"
+  Stage:
+    Default: alpha
+    Type : String
+    AllowedValues:
+      - alpha
+      - beta
+      - gamma
+      - prod
+    ConstraintDescription: Must specify valid value [alpha, beta, gamma, prod]
+
 
 Resources:
   CodePipeline:
@@ -189,18 +199,14 @@ Resources:
           TargetOriginId: !Ref WebsiteBucket
           ViewerProtocolPolicy: "redirect-to-https"   # we want to force HTTPS
 
-  WebsiteBucketParam:
-    Type: 'AWS::SSM::Parameter'
-    Properties:
-      Name: WebsiteBucket
-      Type: String
-      Value: !Ref WebsiteBucket
-      Description: SSM parameter for id of website bucket
-
-  WebsiteDistributionParam:
-    Type: AWS::SSM::Parameter
-    Properties:
-      Name: WebsiteDistribution
-      Type: String
-      Value: !Ref WebsiteDistribution
-      Description: SSM parameter for id of Cloudfront distribution
+Outputs:
+  WebsiteBucketName:
+    Description: The name of the website bucket
+    Value: !Ref WebsiteBucket
+    Export:
+      Name: !Join ['-', ["WebsiteBucketName", !Ref Stage]]
+  WebsiteDistributionName:
+    Description: The name of the website distribution
+    Value: !Ref WebsiteBucketDistribution
+    Export:
+      Name: !Join ['-', ["WebsiteDistributionName", !Ref Stage]]
