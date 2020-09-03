@@ -68,10 +68,10 @@ Resources:
                 Resource:
                   - "*"
               - Effect: Allow
-                  Action:
-                    - "ssm:GetParameters"
-                  Resource:
-                    - "*"
+                Action:
+                  - "ssm:GetParameters"
+                Resource:
+                  - "*"
   CodeBuild:
     Type: 'AWS::CodeBuild::Project'
     Properties:
