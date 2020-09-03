@@ -94,7 +94,7 @@ Resources:
     Properties:
       DistributionConfig:
         Aliases:
-          - !Ref DistributionCName
+          !Join [",", !Ref DistributionCName]
         ViewerCertificate:
           SslSupportMethod: sni-only
           AcmCertificateArn: !Ref CertificateARN
