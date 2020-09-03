@@ -93,8 +93,7 @@ Resources:
     Type: "AWS::CloudFront::Distribution"
     Properties:
       DistributionConfig:
-        Aliases:
-          !Join [",", !Ref DistributionCName]
+        Aliases: !Ref DistributionCName
         ViewerCertificate:
           SslSupportMethod: sni-only
           AcmCertificateArn: !Ref CertificateARN
