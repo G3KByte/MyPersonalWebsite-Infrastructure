@@ -14,7 +14,6 @@ Parameters:
     Description: "Github personal access token"
   DistributionCName:
     Type: CommaDelimitedList
-    Description: "Alternate domain name for Cloudfront distribution"
   CertificateARN:
     Type: String
     Description: "ARN in ACM for alternate name SSL certificate"
@@ -93,6 +92,7 @@ Resources:
     Type: "AWS::CloudFront::Distribution"
     Properties:
       DistributionConfig:
+        Aliases: !Ref DistributionCName
         ViewerCertificate:
           SslSupportMethod: sni-only
           AcmCertificateArn: !Ref CertificateARN
