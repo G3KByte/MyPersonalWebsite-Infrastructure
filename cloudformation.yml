@@ -55,8 +55,9 @@ Resources:
                   - "s3:PutObject"
                   - "s3:PutObjectAcl"
                 Resource:
-                  - !GetAtt WebsiteBucket.Arn
-                  - !Join ['', [!GetAtt WebsiteBucket.Arn, "/*"]]
+                  - "*"
+#                  - !GetAtt WebsiteBucket.Arn
+#                  - !Join ['', [!GetAtt WebsiteBucket.Arn, "/*"]]
               - Effect: Allow
                 Action:
                   - "logs:CreateLogGroup"
@@ -66,6 +67,11 @@ Resources:
                   - "ssm:GetParameters"
                 Resource:
                   - "*"
+              - Effect: Allow
+                  Action:
+                    - "ssm:GetParameters"
+                  Resource:
+                    - "*"
   CodeBuild:
     Type: 'AWS::CodeBuild::Project'
     Properties:
