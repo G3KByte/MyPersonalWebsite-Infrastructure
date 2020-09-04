@@ -122,14 +122,14 @@ Resources:
   WebsiteBucketParam:
     Type: 'AWS::SSM::Parameter'
     Properties:
-      Name: !Join ['-', [!Sub ${AWS::StackName}, "WebsiteBucketName", !Ref Stage]]
+      Name: !Join ['-', [${AWS::StackName}, "WebsiteBucketName", !Ref Stage]]
       Type: String
       Value: !Ref WebsiteBucket
       Description: SSM parameter for id of website bucket
   WebsiteDistributionParam:
     Type: AWS::SSM::Parameter
     Properties:
-      Name: !Join ['-', [!Sub ${AWS::StackName}, "WebsiteDistributionName", !Ref Stage]]
+      Name: !Join ['-', [${AWS::StackName}, "WebsiteDistributionName", !Ref Stage]]
       Type: String
       Value: !Ref WebsiteDistribution
       Description: SSM parameter for id of Cloudfront distribution
