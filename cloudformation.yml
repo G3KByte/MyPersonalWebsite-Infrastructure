@@ -1,17 +1,5 @@
 AWSTemplateFormatVersion: 2010-09-09
 Parameters:
-  ProjectSource:
-    Type: String
-    Description: "Source control URL (e.g. Github)"
-  GithubOwner:
-    Type: String
-    Description: "Owner of repository"
-  GithubRepo:
-    Type: String
-    Description: "Name of repository"
-  GithubOAuthToken:
-    Type: String
-    Description: "Github personal access token"
   DistributionCName:
     Type: CommaDelimitedList
     Description: "Comma delimited list of CNames for distribution"
