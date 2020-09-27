@@ -44,6 +44,7 @@ Resources:
                   - "s3:PutObject"
                   - "s3:PutObjectAcl"
                   - "s3:ListBucket"
+                  - "s3:DeleteObject"
                 Resource:
                   - "*"
 #                  - !GetAtt WebsiteBucket.Arn
