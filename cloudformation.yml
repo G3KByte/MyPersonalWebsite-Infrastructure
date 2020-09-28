@@ -83,6 +83,7 @@ Resources:
     Properties:
       WebsiteConfiguration:
         IndexDocument: index.html
+        ErrorDocument: index.html
 
   WebsiteDistribution:
     Type: "AWS::CloudFront::Distribution"
