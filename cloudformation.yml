@@ -110,6 +110,11 @@ Resources:
             QueryString: true
           TargetOriginId: !Ref WebsiteBucket
           ViewerProtocolPolicy: "redirect-to-https"   # we want to force HTTPS
+        CustomErrorResponses:
+          - ErrorCode: '403'
+            ResponsePagePath: "/index.html"
+            ResponseCode: '200'
+            ErrorCachingMinTTL: '10'
 
   WebsiteBucketParam:
     Type: 'AWS::SSM::Parameter'
